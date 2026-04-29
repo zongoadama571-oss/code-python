@@ -1,17 +1,17 @@
 #Afficher du texte 
-"""print("bonjour")
+print("bonjour")
 #Cree des variable et Demander une information a l'utilisateur avec input
 nom=input("Quel est ton nom ? ")
 age=int(input("Quel est ton age ? "))
 taille=float(input("Quel est ta taille ? "))
 print(f"Je m'appelle {nom} et j'ai {age + 2} ans")
 ######################OU###############################
-print("tu t'appelle", nom, "tu as",str(age + 2) + "ans","et tu mesure",str(taille + 1) + "m")"""
+print("tu t'appelle", nom, "tu as",str(age + 2) + "ans","et tu mesure",str(taille + 1) + "m")
 
 
 #Les conditions (if,else)
 #Une seule condition
-"""age = 17
+age = 17
 if age >= 18:
     print("tu es majeur")
 else:
@@ -36,11 +36,11 @@ argent=5000
 if age >= 18 and argent >= 2000
     print("acces autoriser")
 else:
-    print("acces refuser") """
+    print("acces refuser") 
 
 
 #Les boucles(for, while)
-"""for i in range(3): #range(3)= 5 repetition
+for i in range(3): #range(3)= 5 repetition
     print(i)
 #pour
 for i in range(1, 3): #range(debut, fin, pas)
@@ -64,6 +64,26 @@ for i in range(5):
     if i == 2:  #stop a partir de 2
         break
     print(i) 
+#try/except
+try:
+    x = int(input("Entre un nombre : "))
+    print(x)
+except:
+    print("Erreur : ce n'est pas un nombre")
+#Avec finally
+try:
+    print("debut")
+    x = int(input())
+    print(x)
+except:
+    print("erreur")
+finally:
+    print("fin du programme")
+#Avec pass
+for i in range(5):
+    if i == 2:
+        pass
+    print(i)
 #table de multiplication
 for i in range(1,11):
     print(f"5 * {i} = {5 * i}")
@@ -93,11 +113,11 @@ while True:
         print("trop grand")
     else:
         print("bravo !")
-        break """
+        break 
 
 
 #cree une liste 
-"""nom = ["Adama", "Ali", "Fatou"]
+nom = ["Adama", "Ali", "Fatou"]
 notes = [12,15,9,18]
 #Afficher premier element
 print(nom[0])
@@ -138,12 +158,12 @@ nombre = [] #liste vide
 for i in range(5):
     n = int(input("entre un nombre : "))
     nombre.append(n)
-    print(nombre)  """
+    print(nombre) 
 
 
 #Dictionnaire
 #Cree Dictionnaire
-""" personne = { "nom": "Adama", "age": 25, "ville": "Ouagadougou" }
+personne = { "nom": "Adama", "age": 25, "ville": "Ouagadougou" }
 print(personne["nom"])
 #Modifier une valeur 
 personne["age"] = 26
@@ -159,11 +179,11 @@ for cle in personne: #Affiche les cles
 for valeur in personne.values():  #Affiche les valeurs
     print(valeur)
 for cle, valeur in personne.items():  #Affiche les cles et valeurs
-    print(f"{cle} : {valeur}") """
+    print(f"{cle} : {valeur}") 
 
 
 #Les fonctions 
-"""def dire_bonjour(nom):
+def dire_bonjour(nom):
     print(f"bonjour {nom}")
 dire_bonjour("Adama")
 #fonction avec return
@@ -178,11 +198,11 @@ presentation("ada", 15)
 #fonction avec valeur par defaut
 def saluer(nom="ami"):
     print(f"bonjour {nom}")
-saluer("ad")  """
+saluer("ad")  
 
 
 #introduction a pandas(pip install pandas)
-"""import pandas as pd 
+import pandas as pd 
 #lire fichier
 df = pd.read_csv("pib_bf.csv", sep = ";")
 #print(df)
@@ -357,7 +377,7 @@ df["Classe_revenu"] = pd.qcut(
     df["Salaire"],
     q=4,
     labels=["Bas", "Moyen", "Haut", "Très haut"]
-) """
+) 
 
 
 #Graphique 
@@ -370,7 +390,7 @@ df = pd.read_csv("pib_bf.csv", sep = ";")
 #Courbe d'evolution
 # ==========================================
 # x = points horizontaux, y = points verticaux
-"""x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 y = [2, 5, 4, 8, 7, 9, 12, 11, 15, 14, 18]
 # 2. CRÉATION DU STYLE
 # On crée la figure (l'image) et l'axe (le graphique)
@@ -399,13 +419,13 @@ ax.set_ylabel('Légende Axe Y', color='#7F8C8D')
 # On ajuste les marges pour que rien ne soit coupé
 plt.tight_layout()
 # On affiche le résultat
-plt.show() """
+plt.show() 
 # ==========================================
 #Histogramme
 # ==========================================
 #DONNÉES
 # On simule 1000 notes d'examen ou mesures (moyenne de 12, écart de 3)
-"""donnees = np.random.normal(12, 3, 1000) 
+donnees = np.random.normal(12, 3, 1000) 
 #CRÉATION DU CADRE ET DU DESSIN 
 # Fond gris très clair (#F8F9FA)
 fig, ax = plt.subplots(figsize=(10, 6), facecolor='#F8F9FA')
@@ -432,12 +452,12 @@ ax.set_xlabel('Valeurs mesurées', color='#7F8C8D')
 ax.set_ylabel('Nombre d\'individus', color='#7F8C8D')
 plt.tight_layout()
 plt.show()
-#Si on veut definir la taille des bordure on crees mes bordures=[0, 5, 10, 15, 20] et on fais bin=mes bordures"""
+#Si on veut definir la taille des bordure on crees mes bordures=[0, 5, 10, 15, 20] et on fais bin=mes bordures
 # ==========================================
 #Diagramme en barre
 # ==========================================
 #DONNÉES (Catégories et Valeurs)
-"""categories = ['Produit A', 'Produit B', 'Produit C', 'Produit D']
+categories = ['Produit A', 'Produit B', 'Produit C', 'Produit D']
 valeurs = [15, 24, 12, 18]
 #CRÉATION DU CADRE ET DU DESSIN
 # Fond gris très clair (#F8F9FA)
@@ -474,12 +494,12 @@ for barre in barres:
                 ha='center', va='bottom', 
                 fontsize=10, fontweight='bold', color='#1A5276')
 plt.tight_layout()
-plt.show()"""
+plt.show()
 # ==========================================
 #Camembert
 # ==========================================
 #DONNÉES
-"""labels = ['Ventes A', 'Ventes B', 'Ventes C', 'Ventes D']
+labels = ['Ventes A', 'Ventes B', 'Ventes C', 'Ventes D']
 tailles = [35, 25, 25, 15] # Le total doit faire 100 idéalement
 # Couleurs modernes (une palette de bleus/gris)
 couleurs = ['#1A5276', '#2980B9', '#AED6F1', '#D6DBDF']
@@ -505,7 +525,7 @@ plt.setp(autotexts, size=10, weight="bold", color="white") # Pourcentages en bla
 plt.setp(texts, size=12, color="#2C3E50") # Libellés en gris foncé
 ax.set_title("RÉPARTITION DES VENTES", fontsize=16, fontweight='bold', color='#2C3E50', pad=20)
 plt.tight_layout()
-plt.show()"""
+plt.show()
 # ==========================================
 #Boxplot
 # ==========================================
