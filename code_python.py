@@ -33,14 +33,14 @@ else:
 #Avec logique (and et ou)
 age=20
 argent=5000
-if age >= 18 and argent >= 2000
+if age >= 18 and argent >= 2000:
     print("acces autoriser")
 else:
     print("acces refuser") 
 
 
 #Les boucles(for, while)
-for i in range(3): #range(3)= 5 repetition
+for i in range(3): #range(3)= 3 repetition
     print(i)
 #pour
 for i in range(1, 3): #range(debut, fin, pas)
@@ -182,6 +182,12 @@ for cle, valeur in personne.items():  #Affiche les cles et valeurs
     print(f"{cle} : {valeur}") 
 
 
+#Dataframe
+data={"nom":["adama", "moli"], "age":[25,35,12], "vile":["bobo","lyon","dakar"] }
+df=pd.DataFrame(data)
+print(df)
+
+
 #Les fonctions 
 def dire_bonjour(nom):
     print(f"bonjour {nom}")
@@ -207,9 +213,9 @@ import pandas as pd
 df = pd.read_csv("pib_bf.csv", sep = ";")
 #print(df)
 #Afficher une colonne precise
-#print(df["PIB nominal en milliards de FCFA"])
+print(df["PIB nominal en milliards de FCFA"])
 #selectionner plusieurs colonnes
-#print(df[["colonne","colonne"]])
+print(df[["colonne","colonne"]])
 #Afficher les premieres ligne
 print(df.head())
 #Afficher les dernieres ligne
@@ -241,10 +247,10 @@ df[(df["colonne"]>25) & (df["colonne"]=="Bobo")]
 df.loc[df["colonne"]>25, ["colonne","colonne"]]
 #Filtrer les lignes qui contienne A
 df[df["colonne"].str.contains("A")]
-#Filtrer par position
+#Filtrer par position 
 df.iloc[0:3, 0:2]
 #Ajouter une colonne
-df["colonne"] = [1205,2201,2155]
+df["colonne"] = [1205,2201,2155] 
 #Ajouter une colonne calculer
 df["colonne"] = df["colonne"] + 8
 #Modifier les types de données
@@ -266,13 +272,13 @@ df["colonne"] = df["colonne"].cat.reorder_categories(
     ["Faible", "Moyen", "Élevé"],
     ordered=True
 )
-Option
-errors="raise"
-erreur (par défaut)
-errors="coerce"
-remplace par NaN 
-errors="ignore"
-ne change rien
+#Option
+#errors="raise"
+#erreur (par défaut)
+#errors="coerce"
+#remplace par NaN 
+#errors="ignore"
+#ne change rien
 #Valeur manquantes
 #Voir les valeurs manquantes (True/False)
 df.isna()
@@ -294,14 +300,14 @@ df["Ville"] = df["Ville"].fillna(df["Ville"].mode()[0])
 df.fillna(method="ffill")
 #Remplissage vers l’arrière (backward fill)
 df.fillna(method="bfill")
-Type de variable
-Méthode recommandée
-Numérique
-moyenne / médiane
-Qualitative
-mode
-Temporelle
-ffill / bfill 
+#Type de variable
+#Méthode recommandée
+#Numérique
+#moyenne / médiane
+#Qualitative
+#mode
+#Temporelle
+#ffill / bfill 
 #Doublons 
 #Détecter les doublons
 #Voir les lignes dupliquées
@@ -321,9 +327,11 @@ df.drop_duplicates(keep="last")
 df.drop_duplicates(keep=False)
 #Doublons sur une colonne spécifique
 #Supprime les doublons basés sur la colonne Nom
-df.drop_duplicates(subset=["Nom"])
+df.drop_duplicates(subset=["Nom"],keep="first")
+#client ayant effectuer plusieurs achats(on garde l'identifiant et on addition les achats)
+df_total = df.groupby("client")["achat"].sum().reset_index()
 #Parfois les doublons ne sont pas exacts :"Ali" ≠ "ali"
-#Tout en minuscule 
+#Tout en minuscule (str.upper() pour tout en majuscule)
 df["Nom"] = df["Nom"].str.lower().str.strip()
 #Première lettre en majuscule 
 df["Nom"] = df["Nom"].str.lower().str.strip().str.capitalize()
@@ -356,11 +364,11 @@ df["Sexe"] = df["Sexe"].map({
     "Homme": 1,
     "Femme": 0
 })
-Différence importante
-replace()
-garde valeurs inconnues
-map()
-met NaN si non défini
+#Différence importante
+#replace()
+#garde valeurs inconnues
+#map()
+#met NaN si non défini
 #Recodage avec condition
 df["Statut"] = np.where(df["Age"] >= 18, "Adulte", "Mineur")
 #Recodage avec plusieurs conditions (apply)
@@ -399,11 +407,14 @@ fig, ax = plt.subplots(figsize=(10, 6))
 #fig.patch.set_facecolor("#121212")
 #Change la couleur du graphe
 #ax.set_facecolor("#121212")
+#Change la couleur des graduations
+#ax.tick_params(axis='x',colors="#090A0A", labelsize=12)
+#ax.tick_params(axis='x',colors="#090A0A", labelsize=12)
 # On trace la courbe principale (Bleu foncé, trait épais)
 ax.plot(x, y, color='#1A5276', linewidth=5, label='Ma donnée')
 # L'effet "Stylé" : On remplit l'espace sous la courbe avec un bleu clair transparent
 ax.fill_between(x, y, color='#AED6F1', alpha=0.4)
-# 3. NETTOYAGE DU GRAPHIQUE 
+# NETTOYAGE DU GRAPHIQUE 
 # On enlève les bordures du haut et de droite pour faire moins "scolaire"
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
@@ -412,7 +423,7 @@ ax.spines['left'].set_color('#BDC3C7')
 ax.spines['bottom'].set_color('#BDC3C7')
 # On ajoute une grille uniquement horizontale pour la lecture
 ax.grid(True, linestyle='--', alpha=0.5, axis='y')
-# 4. TITRES ET TEXTES
+#TITRES ET TEXTES
 ax.set_title('TITRE DU GRAPHIQUE', loc='left', fontsize=18, fontweight='bold', color='#2C3E50', pad=20)
 ax.set_xlabel('Légende Axe X', color='#7F8C8D')
 ax.set_ylabel('Légende Axe Y', color='#7F8C8D')
@@ -430,6 +441,9 @@ donnees = np.random.normal(12, 3, 1000)
 # Fond gris très clair (#F8F9FA)
 fig, ax = plt.subplots(figsize=(10, 6), facecolor='#F8F9FA')
 ax.set_facecolor('#F8F9FA')
+#Change la couleur des graduations
+#ax.tick_params(axis='x',colors="#090A0A", labelsize=12)
+#ax.tick_params(axis='x',colors="#090A0A", labelsize=12)
 #TRACÉ DE L'HISTOGRAMME
 n, bins, patches = ax.hist(donnees, 
                            bins=20, # Nombre de "barres"
@@ -463,6 +477,9 @@ valeurs = [15, 24, 12, 18]
 # Fond gris très clair (#F8F9FA)
 fig, ax = plt.subplots(figsize=(10, 6), facecolor='#F8F9FA')
 ax.set_facecolor('#F8F9FA')
+#Change la couleur des graduations
+#ax.tick_params(axis='x',colors="#090A0A", labelsize=12)
+#ax.tick_params(axis='x',colors="#090A0A", labelsize=12)
 #TRACÉ DU DIAGRAMME EN BARRES
 # On utilise ax.bar pour les catégories
 barres = ax.bar(categories, 
@@ -531,7 +548,7 @@ plt.show()
 # ==========================================
 #TES DONNÉES
 # On simule trois groupes de données (ex: scores de 3 classes différentes)
-classe_A = np.random.normal(12, 3, 100)
+classe_A = np.random.normal(12, 3, 100) #12=moyenne des notes; 3=ecart-type des notes; 100=genere 100 notes fictives
 classe_B = np.random.normal(10, 2, 100)
 classe_C = np.random.normal(15, 4, 100)
 donnees = [classe_A, classe_B, classe_C]
