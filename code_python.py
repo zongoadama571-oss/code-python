@@ -215,7 +215,9 @@ df = pd.read_csv("pib_bf.csv", sep = ";")
 Dans le terminale: pip install openpyxl
 df = pd.read_excel("pib_bf.xlsx", sep = ";")
 df = pd.read_excel("pib_bf.xlsx",sheet_name = "Feuil1")
-#print(df)
+#Rendre toutes les colonnes visibles
+pd.set_option('display.max_columns', None)
+print(df)
 #Afficher une colonne precise
 print(df["PIB nominal en milliards de FCFA"])
 #selectionner plusieurs colonnes
