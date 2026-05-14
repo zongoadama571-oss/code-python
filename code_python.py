@@ -209,8 +209,12 @@ saluer("ad")
 
 #introduction a pandas(pip install pandas)
 import pandas as pd 
-#lire fichier
+#lire fichier (csv)
 df = pd.read_csv("pib_bf.csv", sep = ";")
+#lire fichier (excel)
+Dans le terminale: pip install openpyxl
+df = pd.read_excel("pib_bf.xlsx", sep = ";")
+df = pd.read_excel("pib_bf.xlsx",sheet_name = "Feuil1")
 #print(df)
 #Afficher une colonne precise
 print(df["PIB nominal en milliards de FCFA"])
